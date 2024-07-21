@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<input type="text" id="main" />
+	<table border="2px">
+		<tr>
+			<td align="center"><button onclick="display('9')">9</button></td>
+			<td align="center"><button onclick="display('8')">8</button></td>
+			<td align="center"><button onclick="display('7')">7</button></td>
+			<td align="center"><button onclick="display('+')">+</button></td>
+		</tr>
+		<tr>
+			<td align="center"><button onclick="display('6')">6</button></td>
+			<td align="center"><button onclick="display('5')">5</button></td>
+			<td align="center"><button onclick="display('4')">4</button></td>
+			<td align="center"><button onclick="display('-')">-</button></td>
+		</tr>
+		<tr>
+			<td align="center"><button onclick="display('3')">3</button></td>
+			<td align="center"><button onclick="display('2')">2</button></td>
+			<td align="center"><button onclick="display('1')">1</button></td>
+			<td align="center"><button onclick="display('*')">*</button></td>
+		</tr>
+		<tr>
+			<td align="center"><button onclick="Clear()">c</button></td>
+			<td align="center"><button onclick="display('0')">0</button></td>
+			<td align="center"><button onclick="evalute()">=</button></td>
+			<td align="center"><button onclick="display('/')">/</button></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function display(string) {
+			document.getElementById('main').value += string;
+		}
+		function evalute() {
+			var ans = eval(document.getElementById('main').value);
+			document.getElementById('main').value = ans;
+		}
+		function Clear() {
+			document.getElementById('main').value = "";
+		}
+	</script>
+</body>
+
+</html>

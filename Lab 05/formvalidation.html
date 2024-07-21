@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<form id="userform" onsubmit="return validform()">
+		<label for="username">username:</label>
+		<input type="text" id="username" placeholder="Enter user name"><br><br>
+
+		<label for="password">password:</label>
+		<input type="password" id="password" placeholder="Enter password"><br><br>
+
+		<label for="rpassword">rpassword:</label>
+		<input type="password" id="rpassword" placeholder="Enter repeat password"><br><br>
+
+		<label for="dob">Date of birth:</label>
+		<input type="date" id="dob"><br><br>
+
+		<label for="enrolmentnumber">enrolmentnumber:</label>
+		<input type="text" id="enrolmentnumber" placeholder="Enter your enrolmentnumber"><br><br>
+
+		<label for="email">email:</label>
+		<input type="text" id="email" placeholder="Enter your email"><br><br>
+
+		<button type="submit">submit</button>
+	</form>
+	<script>
+		function validform() {
+			var username = document.getElementById('username').value;
+			if (username.length < 8) {
+				alert("Username must be 8 characters long")
+				return false;
+			}
+			var password = document.getElementById('passwors').value;
+			var pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*]).{8,12}$/;
+			if (!pattern.test(password)) {
+				alert("Please enter valid password")
+				return false;
+			}
+			var rpassword = document.getElementById('rpassword').value;
+			if (password != rpassword) {
+				alert("Password not match")
+				return false;
+			}
+			var dob = document.getElementById('dob').value;
+			var dobDate = new Date(dob);
+			var age = new Date().getFullYear() - dobDate.getFullYear();
+			var monthDiff = new Date().getMonth() - dobDate.getMonth;
+			if (monthDiff < 0 || (monthDiff == 0 && new Date().getDate < dobDate.getDate())) {
+				age--;
+			}
+			if (age <= 18) {
+				alert("Age must be greater than 18")
+				return false;
+			}
+			var enrolmentnumber = document.getElementById('enrolmentnumber').value;
+			var pattern2 = /^\d{11}$/;
+			if (!pattern2.test(enrolmentnumber)) {
+				alert("Enrolment number must be 11 digits");
+				return false;
+			}
+			var email = document.getElementById('email').value;
+			var pattern3 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+			if (!pattern3.test(email)) {
+				alert("Invalid email format");
+				return false;
+			}
+			alert("Form submittes Successfully");
+			return true;
+		}
+	</script>
+</body>
+
+</html>
